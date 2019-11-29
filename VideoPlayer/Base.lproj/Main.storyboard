@@ -16,10 +16,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TSk-fG-3VN">
-                                <rect key="frame" x="0.0" y="80" width="414" height="816"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="130" id="wcW-lz-1Bv" customClass="VideoListTableViewCell" customModule="VideoPlayer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="videoCellID" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="videoCellID" rowHeight="130" id="wcW-lz-1Bv" customClass="VideoListTableViewCell" customModule="VideoPlayer" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wcW-lz-1Bv" id="rrY-x8-45e">
@@ -33,7 +33,7 @@
                                                         <constraint firstAttribute="width" constant="120" id="f6m-98-s9K"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Demmy Descrption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhM-oG-XpW">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Demmy Descrption" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhM-oG-XpW">
                                                     <rect key="frame" x="20" y="50" width="239" height="40"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -87,10 +87,10 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aah-K6-AaN">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KP3-J8-RnB">
-                                        <rect key="frame" x="50" y="45" width="314" height="25"/>
+                                        <rect key="frame" x="50" y="54" width="314" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="CED-zu-hUZ"/>
                                         </constraints>
@@ -102,8 +102,8 @@
                                 <color key="backgroundColor" red="1" green="0.4650691593578864" blue="0.2386007689295303" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="KP3-J8-RnB" secondAttribute="trailing" constant="50" id="E9v-Li-FRY"/>
-                                    <constraint firstAttribute="bottom" secondItem="KP3-J8-RnB" secondAttribute="bottom" constant="10" id="Lau-b1-8SU"/>
-                                    <constraint firstAttribute="height" constant="80" id="rZy-9g-dwv"/>
+                                    <constraint firstAttribute="bottom" secondItem="KP3-J8-RnB" secondAttribute="bottom" constant="21" id="Lau-b1-8SU"/>
+                                    <constraint firstAttribute="height" constant="100" id="rZy-9g-dwv"/>
                                     <constraint firstItem="KP3-J8-RnB" firstAttribute="leading" secondItem="aah-K6-AaN" secondAttribute="leading" constant="50" id="vmU-Lh-Nbx"/>
                                 </constraints>
                             </view>
@@ -128,6 +128,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="99.776785714285708"/>
+        </scene>
+        <!--Video DetailVC-->
+        <scene sceneID="SZV-qV-oy7">
+            <objects>
+                <viewController id="Ddx-69-MtV" customClass="VideoDetailVC" customModule="VideoPlayer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="STe-aT-7lv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Et1-ZB-bHO">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0A7-bz-JaL">
+                                        <rect key="frame" x="50" y="55" width="314" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="57c-eF-6my"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.46506915939999999" blue="0.23860076890000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="0A7-bz-JaL" firstAttribute="leading" secondItem="Et1-ZB-bHO" secondAttribute="leading" constant="50" id="KXe-ia-wDl"/>
+                                    <constraint firstAttribute="trailing" secondItem="0A7-bz-JaL" secondAttribute="trailing" constant="50" id="LFs-dx-Et5"/>
+                                    <constraint firstAttribute="bottom" secondItem="0A7-bz-JaL" secondAttribute="bottom" constant="20" id="hsa-CD-PBd"/>
+                                    <constraint firstAttribute="height" constant="100" id="jV7-N1-Db1"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Et1-ZB-bHO" firstAttribute="trailing" secondItem="zxM-jv-paY" secondAttribute="trailing" id="nT6-h6-8U0"/>
+                            <constraint firstItem="Et1-ZB-bHO" firstAttribute="top" secondItem="STe-aT-7lv" secondAttribute="top" id="u2q-95-CXR"/>
+                            <constraint firstItem="Et1-ZB-bHO" firstAttribute="leading" secondItem="zxM-jv-paY" secondAttribute="leading" id="yXV-eT-e13"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zxM-jv-paY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pFS-gC-erU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="933.33333333333337" y="96.428571428571431"/>
         </scene>
     </scenes>
 </document>
