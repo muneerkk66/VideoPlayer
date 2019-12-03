@@ -10,22 +10,22 @@ import UIKit
 private typealias VideoListVCTableViewMethods = VideoListVC
 private typealias Constants = VideoListVC
 class VideoListVC: UIViewController {
+    
     @IBOutlet weak var videoListTableView: UITableView!
     var videoListVM  = VideoListVM()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
+        // MARK: - Load video list
         loadVideoList()
     }
+    // MARK: - Method to fetch all the video list from json file
     private func loadVideoList() {
         guard let loadedList =  videoListVM.loadVideoList() else {
             return
         }
         videoListVM.videoList = loadedList
     }
-
-
 }
 //MARK: - Tableview Methods
 extension VideoListVCTableViewMethods:UITableViewDelegate, UITableViewDataSource {
@@ -52,6 +52,7 @@ extension VideoListVCTableViewMethods:UITableViewDelegate, UITableViewDataSource
         return 0
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let onboardingStoryboard : UIStoryboard = UIStoryboard(name:StoryboardName.main.rawValue, bundle: Bundle.main)
         let videoDetailVC  = onboardingStoryboard.instantiateViewController(withIdentifier: StoryboardIdentifier.videoDetailVCID.rawValue) as! VideoDetailVC
         videoListVM.selectedVideo = videoListVM.videoList[indexPath.row]

@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
+// MARK: VideoPlayerConstants -
 class VideoPlayerConstants: NSObject {
     static let dataFile = "Data"
     static let dataFileExtension = "json"

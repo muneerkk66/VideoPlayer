@@ -11,15 +11,23 @@ class VideoListVM: NSObject {
     var videoList = [Video]()
     var selectedVideo = Video()
     var dataHandler = VideoPlayerDataHandler()
+    
+    // MARK: Method to get video list
     func loadVideoList()->[Video]?{
         self.dataHandler.getVideoList()
     }
+    // MARK: Method to load the vide from video url.VideoPlayerView is the responsible class to play the video
+    // MARK: VideoPlayerView inititlaize with URL string
     func playVideoPlayer(player:VideoPlayerView,video:Video){
         if let player = VideoPlayerView.initialize(with: player.bounds) {
             player.isToShowPlaybackControls = true
             player.addSubview(player)
-            let url = URL(string: video.videoUrl!)
-            player.loadVideos(with: url!)
+            
+            // MARK: handling force unwrapping
+            guard let urlString = video.videoUrl, let url = URL(string: urlString) else {
+                return
+            }
+            player.loadVideos(with: url)
             player.playVideo()
         }
     }
