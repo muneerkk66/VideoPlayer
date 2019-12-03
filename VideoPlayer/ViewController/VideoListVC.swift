@@ -51,6 +51,13 @@ extension VideoListVCTableViewMethods:UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let onboardingStoryboard : UIStoryboard = UIStoryboard(name:StoryboardName.main.rawValue, bundle: Bundle.main)
+        let videoDetailVC  = onboardingStoryboard.instantiateViewController(withIdentifier: StoryboardIdentifier.videoDetailVCID.rawValue) as! VideoDetailVC
+        videoListVM.selectedVideo = videoListVM.videoList[indexPath.row]
+        videoDetailVC.videoListVM = videoListVM
+        self.present(videoDetailVC, animated: true, completion: nil)
+    }
     
 }
 //MARK: - Tableview Constants

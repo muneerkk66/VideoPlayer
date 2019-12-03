@@ -9,8 +9,18 @@
 import Foundation
 class VideoListVM: NSObject {
     var videoList = [Video]()
+    var selectedVideo = Video()
     var dataHandler = VideoPlayerDataHandler()
     func loadVideoList()->[Video]?{
         self.dataHandler.getVideoList()
+    }
+    func playVideoPlayer(player:VideoPlayerView,video:Video){
+        if let player = VideoPlayerView.initialize(with: player.bounds) {
+            player.isToShowPlaybackControls = true
+            player.addSubview(player)
+            let url = URL(string: video.videoUrl!)
+            player.loadVideos(with: url!)
+            player.playVideo()
+        }
     }
 }
