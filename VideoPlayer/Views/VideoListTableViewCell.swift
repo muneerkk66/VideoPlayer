@@ -13,7 +13,7 @@ class VideoListTableViewCell: UITableViewCell {
     @IBOutlet weak var videoDesLabel: UILabel!
     @IBOutlet weak var videoDateLabel: UILabel!
     @IBOutlet weak var videoImageView: UIImageView!
-    
+    var videListVM = VideoListVM()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,7 +29,22 @@ class VideoListTableViewCell: UITableViewCell {
         videoNameLabel.text = video.name
         videoDesLabel.text = video.description
         videoDateLabel.text = video.date
-       
+        guard let thumbUrl = video.thumpUrl else{
+            return
+        }
+        videListVM.getThumbImage(thumbUrl, { (image, error) in
+            DispatchQueue.main.async(execute: { [weak self]() -> Void in
+                guard let weakSelf = self else {
+                    return
+                }
+                if let thumpImage = image as? UIImage{
+                    weakSelf.videoImageView.image = thumpImage
+                }else{
+                    weakSelf.videoImageView.image = UIImage(named: "placeholder")
+                }
+            })
+            
+        })
 
     }
 }

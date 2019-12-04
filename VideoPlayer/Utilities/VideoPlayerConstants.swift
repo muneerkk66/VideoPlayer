@@ -12,4 +12,6 @@ let appDelegate = UIApplication.shared.delegate as! AppDelegate
 class VideoPlayerConstants: NSObject {
     static let dataFile = "Data"
     static let dataFileExtension = "json"
+    //MARK:- Custom player control idle time
+    static let customControlTimeout = 10.0
 }

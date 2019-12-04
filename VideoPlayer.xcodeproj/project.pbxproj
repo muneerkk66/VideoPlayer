@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080D8DED2396BB210089FA31 /* BaseVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080D8DEC2396BB210089FA31 /* BaseVM.swift */; };
 		08847E78239171CE0050B8D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08847E77239171CE0050B8D8 /* AppDelegate.swift */; };
 		08847E7A239171CE0050B8D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08847E79239171CE0050B8D8 /* SceneDelegate.swift */; };
 		08847E7F239171CE0050B8D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08847E7D239171CE0050B8D8 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		080D8DEC2396BB210089FA31 /* BaseVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVM.swift; sourceTree = "<group>"; };
 		08847E74239171CE0050B8D8 /* VideoPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08847E77239171CE0050B8D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08847E79239171CE0050B8D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,11 +123,11 @@
 		08847E76239171CE0050B8D8 /* VideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				08847EB9239183520050B8D8 /* ViewController */,
-				08847EAA239172130050B8D8 /* Utilities */,
-				08847EA92391720B0050B8D8 /* Model */,
 				08847EA8239172000050B8D8 /* ViewModel */,
 				08847EA7239171EF0050B8D8 /* Views */,
+				08847EB9239183520050B8D8 /* ViewController */,
+				08847EA92391720B0050B8D8 /* Model */,
+				08847EAA239172130050B8D8 /* Utilities */,
 				08847E77239171CE0050B8D8 /* AppDelegate.swift */,
 				08847E79239171CE0050B8D8 /* SceneDelegate.swift */,
 				08847E7D239171CE0050B8D8 /* Main.storyboard */,
@@ -195,6 +197,7 @@
 			children = (
 				08847EAB2391725D0050B8D8 /* VideoListVM.swift */,
 				08C2F43D23956A2A001530E2 /* VideoPlayerManager.swift */,
+				080D8DEC2396BB210089FA31 /* BaseVM.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				08847E7A239171CE0050B8D8 /* SceneDelegate.swift in Sources */,
 				08847EC0239185A30050B8D8 /* VideoListTableViewCell.swift in Sources */,
 				08C2F43C2395149C001530E2 /* VideoPlayerView.swift in Sources */,
+				080D8DED2396BB210089FA31 /* BaseVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

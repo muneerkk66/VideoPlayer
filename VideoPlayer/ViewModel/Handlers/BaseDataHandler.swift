@@ -10,4 +10,5 @@ import Foundation
 class BaseDataHandler: NSObject {
     //MARK: - Common completetionblock for DataHandler classes
     internal typealias DataHandlerCompletionBlock = (_ errorObject : NSError?) -> ()
+    internal typealias DataHandlerDataCompletionBlock = (_ responseObject : Any?, _ errorObject : NSError?) -> ()
 }

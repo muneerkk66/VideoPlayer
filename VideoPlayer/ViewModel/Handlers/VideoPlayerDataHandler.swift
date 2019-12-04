@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVKit
 class VideoPlayerDataHandler: BaseDataHandler {
     // MARK: Method to load the Json data from file then decode to video object -
     func getVideoList()->[Video]?{
@@ -17,6 +18,21 @@ class VideoPlayerDataHandler: BaseDataHandler {
             return videoList
          }
         
+    }
+    func getThumbnailImageFromVideoUrl(url: String, _ onCompletion:@escaping DataHandlerDataCompletionBlock) {
+            DispatchQueue.global().async {
+                if let url = URL(string: url) {
+                   let data = try? Data(contentsOf: url) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                       if data != nil {
+                           onCompletion(UIImage(data:data!),nil)
+                       }else{
+                           onCompletion(nil,nil)
+                       }
+
+                }
+                onCompletion(nil,nil)
+
+            }
     }
     
 }

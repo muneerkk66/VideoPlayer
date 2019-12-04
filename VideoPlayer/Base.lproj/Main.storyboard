@@ -33,7 +33,7 @@
                                                         <constraint firstAttribute="width" constant="120" id="f6m-98-s9K"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Demmy Descrption" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhM-oG-XpW">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Demmy Descrption" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhM-oG-XpW">
                                                     <rect key="frame" x="20" y="50" width="239" height="40"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -181,13 +181,6 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="349"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoadMore" translatesAutoresizingMaskIntoConstraints="NO" id="L0P-EQ-GHu" customClass="PlaceHolderView" customModule="VideoPlayer" customModuleProvider="target">
-                                        <rect key="frame" x="187" y="154.5" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="CWK-6z-BJm"/>
-                                            <constraint firstAttribute="height" constant="40" id="fVl-sa-yWx"/>
-                                        </constraints>
-                                    </imageView>
                                     <view clipsSubviews="YES" alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9vy-pQ-bxI">
                                         <rect key="frame" x="0.0" y="309" width="414" height="40"/>
                                         <subviews>
@@ -289,11 +282,9 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="L0P-EQ-GHu" firstAttribute="centerX" secondItem="i7F-Q0-adH" secondAttribute="centerX" id="A9b-97-WeL"/>
                                     <constraint firstAttribute="bottom" secondItem="1Pe-8v-cAC" secondAttribute="bottom" id="C2A-a7-dKs"/>
                                     <constraint firstAttribute="trailing" secondItem="1Pe-8v-cAC" secondAttribute="trailing" id="JuF-xr-aq6"/>
                                     <constraint firstItem="1Pe-8v-cAC" firstAttribute="leading" secondItem="i7F-Q0-adH" secondAttribute="leading" id="Orr-VR-GsI"/>
-                                    <constraint firstItem="L0P-EQ-GHu" firstAttribute="centerY" secondItem="i7F-Q0-adH" secondAttribute="centerY" id="Qjt-9C-pSp"/>
                                     <constraint firstAttribute="bottom" secondItem="9vy-pQ-bxI" secondAttribute="bottom" id="Ryf-Eu-XGI"/>
                                     <constraint firstAttribute="height" constant="349" id="XOE-ye-Bm8"/>
                                     <constraint firstAttribute="trailing" secondItem="9vy-pQ-bxI" secondAttribute="trailing" id="cKb-9M-076"/>
@@ -301,7 +292,6 @@
                                     <constraint firstItem="9vy-pQ-bxI" firstAttribute="leading" secondItem="i7F-Q0-adH" secondAttribute="leading" id="vbC-fz-dbC"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="loaderView" destination="L0P-EQ-GHu" id="oei-eA-IWM"/>
                                     <outlet property="playPauseButton" destination="hAe-aS-4XL" id="rhu-2Z-XOi"/>
                                     <outlet property="playbackControlsViewHeightContraint" destination="uZl-ve-R1B" id="YNC-wv-Inf"/>
                                     <outlet property="progressBar" destination="ZR3-5j-qah" id="xja-BC-xXT"/>
@@ -369,7 +359,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LoadMore" width="45" height="45"/>
         <image name="expand" width="50" height="50"/>
         <image name="mute" width="50" height="50"/>
         <image name="pause" width="50" height="50"/>

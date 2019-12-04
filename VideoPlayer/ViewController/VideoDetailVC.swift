@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVKit
 
 class VideoDetailVC: UIViewController {
     
@@ -18,7 +19,7 @@ class VideoDetailVC: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var navLabel: UILabel!
     @IBOutlet weak var videoPlayerView: VideoPlayerView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,6 +52,7 @@ class VideoDetailVC: UIViewController {
      @IBAction private func onTapCloseButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    
 
 
 }

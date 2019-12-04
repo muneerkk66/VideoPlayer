@@ -17,7 +17,6 @@ class VideoPlayerView: UIView {
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var volumeButton: UIButton!
     @IBOutlet weak var playbackControlsViewHeightContraint: NSLayoutConstraint!
-    @IBOutlet weak var loaderView: PlaceHolderView!
     
     //MARK: Private Properties
        private var timer: Timer?
@@ -35,6 +34,7 @@ class VideoPlayerView: UIView {
             self.volumeButton.isSelected = self.isMuted
         }
     }
+    //MARK: Controller visibility flag
     public var isToShowPlaybackControls = true {
         didSet {
             UIView.animate(withDuration: 0.5) {
@@ -46,11 +46,9 @@ class VideoPlayerView: UIView {
                     self.layoutIfNeeded()
                 }
             }
-            
-            
+
         }
     }
-    
     
     //MARK: Lifecycle Methods
     override public func layoutSubviews() {
@@ -62,8 +60,6 @@ class VideoPlayerView: UIView {
         NotificationCenter.default.removeObserver(self)
     }
     
-   
-    
     //MARK: Public Methods
     public class func initialize(with frame: CGRect) -> VideoPlayerView? {
         let bundle = Bundle(for: VideoPlayerView.self)
@@ -71,8 +67,9 @@ class VideoPlayerView: UIView {
         view?.frame = frame
         return view
     }
-    
+    //MARK: Load Video Player
     public func loadVideos(with url: URL) {
+        
         self.player = AVPlayer(url: url)
         self.playerLayer = AVPlayerLayer(player: self.player)
         self.videoView.layer.insertSublayer(self.playerLayer!, at: 0)
@@ -89,10 +86,11 @@ class VideoPlayerView: UIView {
     @objc func handleVideoTap(gesture: UITapGestureRecognizer) -> Void {
         hideControlMenuWithDelay()
     }
+    //MARK:- Custom player control menu hide after 10.0 seconds
     private func hideControlMenuWithDelay(){
         if !isToShowPlaybackControls {
             isToShowPlaybackControls = true
-            Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) {[weak self] (timer) in
+            Timer.scheduledTimer(withTimeInterval: VideoPlayerConstants.customControlTimeout, repeats: false) {[weak self] (timer) in
                 guard let weakSelf = self else {
                     return
                 }
@@ -101,12 +99,12 @@ class VideoPlayerView: UIView {
             }
         }
     }
-    
+    //MARK: Play Method
     public func playVideo() {
         self.player?.play()
         self.playPauseButton.isSelected = true
     }
-    
+    //MARK: Pause Method
     public func pauseVideo() {
         self.player?.pause()
         self.playPauseButton.isSelected = false
@@ -121,24 +119,22 @@ class VideoPlayerView: UIView {
         }
         
     }
-    
+    //MARK: Fullscreen method
     @IBAction private func onTapExpandVideoButton(_ sender: UIButton) {
         self.pauseVideo()
         let controller = AVPlayerViewController()
         controller.player = player
-//        NotificationCenter.default.addObserver(self, selector: #selector(avPlayerDidDismiss), name: Notification.Name("avPlayerDidDismiss"), object: nil)
-//        self.parentViewController().present(controller, animated: true) {[weak self] in
-//            DispatchQueue.main.async {
-//                self?.isMuted = false
-//                self?.playVideo()
-//            }
-//        }
+        self.parentViewController()?.present(controller, animated: true)
+            DispatchQueue.main.async {
+                self.isMuted = false
+                self.playVideo()
+           }
     }
-    
+    //MARK: Volume control
     @IBAction private func onTapVolumeButton(_ sender: UIButton) {
         self.isMuted = !sender.isSelected
     }
-    
+    //MARK: Forward video
     @IBAction private func onTapRewindButton(_ sender: UIButton) {
         if let currentTime = self.player?.currentTime() {
             var newTime = CMTimeGetSeconds(currentTime) - Constants.rewindForwardDuration
@@ -148,7 +144,7 @@ class VideoPlayerView: UIView {
             self.player?.seek(to: CMTime(value: CMTimeValue(newTime * 1000), timescale: 1000))
         }
     }
-    
+    //MARK: Backward video
     @IBAction private func onTapForwardButton(_ sender: UIButton) {
         if let currentTime = self.player?.currentTime(), let duration = self.player?.currentItem?.duration {
             var newTime = CMTimeGetSeconds(currentTime) + Constants.rewindForwardDuration
@@ -159,15 +155,24 @@ class VideoPlayerView: UIView {
         }
     }
 }
-class PlaceHolderView: UIImageView {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-        rotationAnimation.toValue = .pi * 2.0 * 2 * 60.0
-        rotationAnimation.duration = 200.0
-        rotationAnimation.isCumulative = true
-        rotationAnimation.repeatCount = Float.infinity
-        self.layer.add(rotationAnimation, forKey: "rotationAnimation")
+extension UIView
+{
+    //MARK:- This method return the parent UIViewController of a UIView
+    //MARK: - : parent controller of UIView (i.e. self)
+    func parentViewController() -> UIViewController? {
+        return self.traverseResponderChainForUIViewController() as? UIViewController
+    }
+    
+    private func traverseResponderChainForUIViewController() -> AnyObject? {
+        if let nextResponder = self.next {
+            if nextResponder is UIViewController {
+                return nextResponder
+            } else if nextResponder is UIView {
+                return (nextResponder as! UIView).traverseResponderChainForUIViewController()
+            } else {
+                return nil
+            }
+        }
+        return nil
     }
 }

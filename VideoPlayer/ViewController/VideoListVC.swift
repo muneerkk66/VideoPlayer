@@ -53,6 +53,7 @@ extension VideoListVCTableViewMethods:UITableViewDelegate, UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        tableView.deselectRow(at: indexPath, animated: true)
         let onboardingStoryboard : UIStoryboard = UIStoryboard(name:StoryboardName.main.rawValue, bundle: Bundle.main)
         let videoDetailVC  = onboardingStoryboard.instantiateViewController(withIdentifier: StoryboardIdentifier.videoDetailVCID.rawValue) as! VideoDetailVC
         videoListVM.selectedVideo = videoListVM.videoList[indexPath.row]
